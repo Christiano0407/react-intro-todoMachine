@@ -1,11 +1,11 @@
 //**? ================== Component TodoList ===================== */
+import { TodoItem } from './TodoItem';
 
-export function TodoList() {
+export function TodoList(props) {
   return (
-    <ul className=" w-full flex flex-col p-4 ">
-      <li>
-        <span>List</span>
-      </li>
-    </ul>
+    <div className="w-full p-[1rem]">
+      <TodoItem />
+      <TodoItem />
+    </div>
   );
 }
