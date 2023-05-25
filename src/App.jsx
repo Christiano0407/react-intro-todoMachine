@@ -8,11 +8,13 @@ import './App.css';
 function App() {
   return (
     <>
-      <main className="w-full p-[10px]">
-        <TodoCounter completed={5} total={10} />
-        <TodoSearch />
-        <TodoList />
-        <BtnCreateTodo />
+      <main className="w-full h-screen p-[10px] grid gap-[2rem] sm:grid-cols-1 grid-flow-row md:grid-cols-2 ">
+        <section className="w-full sm:auto-cols-max md:col-start-1 col-end-2 flex flex-col">
+          <TodoCounter completed={5} total={10} />
+          <TodoSearch />
+          <BtnCreateTodo />
+          <TodoList />
+        </section>
       </main>
     </>
   );

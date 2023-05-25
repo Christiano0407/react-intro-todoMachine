@@ -2,8 +2,8 @@
 
 export function TodoCounter({ completed, total }) {
   return (
-    <div className="w-full p-[1rem mx-[auto] my-[2rem]]">
-      <h1 className="font-bold text-black text-[2.4rem]">
+    <div className="max-w-max p-[10px] mx-auto mb-8]">
+      <h1 className="font-bold text-black text-[3rem]">
         You have {completed} de {total}
       </h1>
     </div>
