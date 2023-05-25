@@ -1,9 +1,9 @@
 //** === ============= === ===== Component App ===== === ================ === */
-import { TodoCounter } from './components/TodoCounter';
-import { TodoSearch } from './components/TodoSearch';
-import { TodoList } from './components/TodoList';
-import { BtnCreateTodo } from './components/BtnCreateTodo';
-import './App.css';
+import { TodoCounter } from "./components/TodoCounter";
+import { TodoSearch } from "./components/TodoSearch";
+import { TodoList } from "./components/TodoList";
+import { BtnCreateTodo } from "./components/BtnCreateTodo";
+import "./App.css";
 
 function App() {
   return (
@@ -12,8 +12,8 @@ function App() {
         <section className="w-full sm:auto-cols-max md:col-start-1 col-end-2 flex flex-col">
           <TodoCounter completed={5} total={10} />
           <TodoSearch />
-          <BtnCreateTodo />
           <TodoList />
+          <BtnCreateTodo />
         </section>
       </main>
     </>

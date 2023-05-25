@@ -1,13 +1,12 @@
 //**? ================= Component Btn ==================== */
-import { VscAdd } from 'react-icons/vsc';
+import { VscAdd } from "react-icons/vsc";
 
 export function BtnCreateTodo() {
   return (
-    <div>
-      <span>Add Todo</span>
-      <button className="p-[10px] font-medium text-[15px] text-white bg-black mt-8 rounded-lg outline-none">
+    <>
+      <button className="w-[5rem] h-[5rem] p-[10px] font-bold text-[20px] text-white bg-black mt-8 rounded-[50%] outline-none flex justify-center items-center sm:relative left-[50rem]">
         <VscAdd />
       </button>
-    </div>
+    </>
   );
 }
