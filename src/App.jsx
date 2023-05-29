@@ -3,6 +3,7 @@ import { TodoCounter } from "./components/TodoCounter";
 import { TodoSearch } from "./components/TodoSearch";
 import { TodoList } from "./components/TodoList";
 import { BtnCreateTodo } from "./components/BtnCreateTodo";
+import { ImagePlus } from "./components/ImagePlus";
 import "./App.css";
 
 function App() {
@@ -15,7 +16,9 @@ function App() {
           <TodoList />
           <BtnCreateTodo />
         </section>
-        <section></section>
+        <section className="mob:hidden sm:hidden md:col-start-2 col-end-4">
+          <ImagePlus />
+        </section>
       </main>
     </>
   );
