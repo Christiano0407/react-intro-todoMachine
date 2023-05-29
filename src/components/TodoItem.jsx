@@ -13,12 +13,18 @@ export function TodoItem() {
             className="w-[80%] p-[10px] text-center font-bold text-2xl mx-auto my-5 border-solid border-2 border-black flex items-center justify-evenly "
           >
             <button
-              className={`${todo.completed} w-[2.5rem] h-[2.5rem] rounded-[50%] bg-black  text-white flex items-center justify-center`}
+              className={`${
+                todo.completed === true && "btn-active"
+              } w-[2.5rem] h-[2.5rem] rounded-[50%] bg-black  text-white flex items-center justify-center`}
             >
               <FaRegCheckCircle />
             </button>
             <p>{todo.text}</p>
-            <button className="w-[2.5rem] h-[2.5rem] rounded-[50%] bg-black text-white flex items-center justify-center ">
+            <button
+              className={`${
+                todo.completed === false && "btn-inactive"
+              }  w-[2.5rem] h-[2.5rem] rounded-[50%] bg-black text-white flex items-center justify-center`}
+            >
               <FaRegTimesCircle />
             </button>
           </li>
