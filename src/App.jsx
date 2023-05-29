@@ -15,6 +15,7 @@ function App() {
           <TodoList />
           <BtnCreateTodo />
         </section>
+        <section></section>
       </main>
     </>
   );

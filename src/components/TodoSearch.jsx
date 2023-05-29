@@ -1,12 +1,16 @@
 //**? =================== Component Todo Search ================= */
+import { FaSearch } from "react-icons/fa";
 
 export function TodoSearch() {
   return (
-    <div className=" w-full p-[1rem] flex items-center">
+    <div className=" w-[90%] p-[1rem] flex items-center mx-auto my-2 border-solid border-2 border-black rounded-lg font-semibold text-lg ">
       <input
         placeholder="Call List"
-        className="p-[1.5rem] w-[90%] mx-auto my-4 border-solid border-4 border-black rounded-lg font-semibold text-lg"
+        className="p-[1rem] w-[90%] outline-none border-none"
       ></input>
+      <a className="ml-2">
+        <FaSearch />
+      </a>
     </div>
   );
 }
