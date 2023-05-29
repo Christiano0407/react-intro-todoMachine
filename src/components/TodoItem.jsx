@@ -12,14 +12,15 @@ export function TodoItem() {
             key={todo.text}
             className="w-[80%] p-[10px] text-center font-bold text-2xl mx-auto my-5 border-solid border-2 border-black flex items-center justify-evenly "
           >
-            <a>
+            <button
+              className={`${todo.completed} w-[2.5rem] h-[2.5rem] rounded-[50%] bg-black  text-white flex items-center justify-center`}
+            >
               <FaRegCheckCircle />
-            </a>
+            </button>
             <p>{todo.text}</p>
-            <span>{todo.completed}</span>
-            <a>
+            <button className="w-[2.5rem] h-[2.5rem] rounded-[50%] bg-black text-white flex items-center justify-center ">
               <FaRegTimesCircle />
-            </a>
+            </button>
           </li>
         ))}
       </ul>

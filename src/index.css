@@ -4,6 +4,16 @@
 @tailwind utilities;
 /* ===== Import Font =====*/
 /* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap'); */
+
+/* === Tailwind CSS === @apply*/
+.btn-active {
+  @apply bg-green-500;
+}
+
+.btn-inactive {
+  @apply bg-red-900;
+}
+
 /* === CSS Original === */
 * {
   margin: 0;
