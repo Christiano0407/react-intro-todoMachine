@@ -14,7 +14,8 @@ export function TodoItem({ searchTodo, stateTodo, setStateTodo }) {
   const deleteTodo = (text) => {
     const newTodo = [...stateTodo];
     const indexDelete = newTodo.findIndex((todo) => todo.text === text);
-    newTodo[indexDelete].completed = false;
+    //newTodo[indexDelete].completed = false;
+    newTodo.splice(indexDelete, 1);
     setStateTodo(newTodo);
   };
 
