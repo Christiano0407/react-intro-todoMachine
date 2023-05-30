@@ -14,7 +14,7 @@ export function TodoItem() {
           >
             <button
               className={`${
-                todo.completed === true && "btn-active"
+                !!todo.completed && "btn-active"
               } w-[2.5rem] h-[2.5rem] rounded-[50%] bg-black  text-white flex items-center justify-center`}
             >
               <FaRegCheckCircle />

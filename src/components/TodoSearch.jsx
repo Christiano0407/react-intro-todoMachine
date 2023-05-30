@@ -1,12 +1,8 @@
 //**? =================== Component Todo Search ================= */
-import { useState } from "react";
+//import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 
-export function TodoSearch() {
-  const [state, setState] = useState("");
-
-  console.log("Changes add" + state);
-
+export function TodoSearch({ state, setState }) {
   return (
     <div className=" w-[90%] p-[1rem] flex items-center mx-auto my-2 border-solid border-2 border-black rounded-[5rem] font-semibold text-lg ">
       <input
