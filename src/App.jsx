@@ -20,7 +20,9 @@ function App() {
   const totalTodo = stateTodo.length;
 
   const searchTodo = stateTodo.filter((todo) => {
-    return todo.text.includes(state);
+    const textLower = todo.text.toLowerCase();
+    const textUpper = state.toLocaleUpperCase();
+    return textLower.includes(textUpper);
   });
 
   return (
