@@ -19,13 +19,17 @@ function App() {
   const completedTodo = stateTodo.filter((todo) => !!todo.completed).length;
   const totalTodo = stateTodo.length;
 
+  const searchTodo = stateTodo.filter((todo) => {
+    return todo.text.includes(state);
+  });
+
   return (
     <>
       <main className="w-full h-full p-[10px] grid gap-[2rem] sm:grid-cols-1 grid-flow-row md:grid-cols-2 ">
         <section className="w-full sm:auto-cols-max md:col-start-1 col-end-2 flex flex-col">
           <TodoCounter completed={completedTodo} total={totalTodo} />
           <TodoSearch state={state} setState={setState} />
-          <TodoList />
+          <TodoList searchTodo={searchTodo} />
           <BtnCreateTodo />
         </section>
         <section className="mob:hidden sm:hidden md:col-start-2 col-end-4">

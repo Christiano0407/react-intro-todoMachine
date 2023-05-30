@@ -3,11 +3,11 @@ import { FaRegCheckCircle, FaRegTimesCircle } from "react-icons/fa";
 import { Data } from "../data/Data";
 console.log(Data);
 
-export function TodoItem() {
+export function TodoItem({ searchTodo }) {
   return (
     <>
       <ul className="w-full p-[1rem] flex flex-col ">
-        {Data.map((todo) => (
+        {searchTodo.map((todo) => (
           <li
             key={todo.text}
             className="w-[80%] p-[10px] text-center font-bold text-2xl mx-auto my-5 border-solid border-2 border-black flex items-center justify-evenly "
