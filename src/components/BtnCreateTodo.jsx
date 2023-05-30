@@ -1,7 +1,7 @@
 //**? ================= Component Btn ==================== */
 import { VscAdd } from "react-icons/vsc";
 
-export function BtnCreateTodo() {
+export function BtnCreateTodo(props) {
   return (
     <>
       <button

@@ -14,14 +14,14 @@ function App() {
   const [state, setState] = useState("");
   console.log("Change " + state);
 
-  const [stateTodo, setSateTodo] = useState(Data);
+  const [stateTodo, setStateTodo] = useState(Data);
 
   const completedTodo = stateTodo.filter((todo) => !!todo.completed).length;
   const totalTodo = stateTodo.length;
 
   const searchTodo = stateTodo.filter((todo) => {
     const textLower = todo.text.toLowerCase();
-    const textUpper = state.toLocaleUpperCase();
+    const textUpper = state.toLocaleLowerCase();
     return textLower.includes(textUpper);
   });
 
@@ -31,7 +31,11 @@ function App() {
         <section className="w-full sm:auto-cols-max md:col-start-1 col-end-2 flex flex-col">
           <TodoCounter completed={completedTodo} total={totalTodo} />
           <TodoSearch state={state} setState={setState} />
-          <TodoList searchTodo={searchTodo} />
+          <TodoList
+            searchTodo={searchTodo}
+            stateTodo={stateTodo}
+            setStateTodo={setStateTodo}
+          />
           <BtnCreateTodo />
         </section>
         <section className="mob:hidden sm:hidden md:col-start-2 col-end-4">
@@ -47,4 +51,13 @@ export default App;
 /**
  * <React.Fragment></React.Fragment> === <></>
  * Element or Component Children into a Element or Component Father
+ */
+
+/**
+ * const completeDeleteTodo = (text) => {
+    const newTodo = [...state];
+    const todoIndex = newTodo.findIndex((todo) => todo.text == text);
+    newTodo[todoIndex].completed = true;
+    setState(newTodo);
+  };
  */
