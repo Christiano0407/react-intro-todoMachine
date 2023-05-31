@@ -73,3 +73,6 @@ export function TodoItem({ searchTodo, stateTodo, setStateTodo }) {
     </>
   );
 }
+/**
+ * => todo.completed ? "color" :  && "btn-inactive"
+ */

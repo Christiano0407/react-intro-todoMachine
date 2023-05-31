@@ -1,6 +1,8 @@
 //**? ================= Component Btn ==================== */
 import { VscAdd } from "react-icons/vsc";
 import { FaPlus } from "react-icons/fa";
+import { ModalCreate } from "./microComponent/ModalCreate";
+//import { ModalCreate } from "./microComponent/ModalCreate";
 
 export function BtnCreateTodo(props) {
   return (
@@ -10,7 +12,6 @@ export function BtnCreateTodo(props) {
         onClick={(e) => {
           e.preventDefault();
           console.log("Click On Btn");
-          console.log(e.target);
         }}
       >
         <FaPlus />
