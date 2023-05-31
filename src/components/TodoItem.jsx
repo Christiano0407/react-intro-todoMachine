@@ -1,5 +1,10 @@
 //**? ================ Component Item =============== */
-import { FaRegCheckCircle, FaRegTimesCircle } from "react-icons/fa";
+import {
+  FaRegCheckCircle,
+  FaRegTimesCircle,
+  FaTimes,
+  FaExclamationTriangle,
+} from "react-icons/fa";
 import { Data } from "../data/Data";
 console.log(Data);
 
@@ -9,6 +14,13 @@ export function TodoItem({ searchTodo, stateTodo, setStateTodo }) {
     const todoIndex = newTodo.findIndex((todo) => todo.text == text);
     newTodo[todoIndex].completed = true;
     setStateTodo(newTodo);
+  };
+
+  const notCompletedTodo = (text) => {
+    const todoNew = [...stateTodo];
+    const indexTodo = todoNew.findIndex((todo) => todo.text === text);
+    todoNew[indexTodo].completed = false;
+    setStateTodo(todoNew);
   };
 
   const deleteTodo = (text) => {
@@ -25,7 +37,7 @@ export function TodoItem({ searchTodo, stateTodo, setStateTodo }) {
         {searchTodo.map((todo) => (
           <li
             key={todo.text}
-            className="w-[80%] p-[10px] text-center font-bold text-2xl mx-auto my-5 border-solid border-2 border-black flex items-center justify-evenly "
+            className="w-[80%] p-[10px] text-center font-bold text-2xl mx-auto my-5 border-solid border-[3px] border-black flex items-center justify-evenly shadow-sm rounded-[1rem] "
           >
             <button
               className={`${
@@ -35,14 +47,25 @@ export function TodoItem({ searchTodo, stateTodo, setStateTodo }) {
             >
               <FaRegCheckCircle />
             </button>
+
             <p>{todo.text}</p>
+
             <button
               className={`${
                 todo.completed === false && "btn-inactive"
               }  w-[2.5rem] h-[2.5rem] rounded-[50%] bg-black text-white flex items-center justify-center active:scale-90`}
+              onClick={() => notCompletedTodo(todo.text)}
+            >
+              <FaExclamationTriangle />
+            </button>
+
+            <button
+              className={`${
+                todo.completed === false
+              }  w-[2.5rem] h-[2.5rem] rounded-[50%] bg-black text-white flex items-center justify-center active:scale-90`}
               onClick={() => deleteTodo(todo.text)}
             >
-              <FaRegTimesCircle />
+              <FaTimes />
             </button>
           </li>
         ))}

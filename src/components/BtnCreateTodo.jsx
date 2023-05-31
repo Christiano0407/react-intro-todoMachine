@@ -1,5 +1,6 @@
 //**? ================= Component Btn ==================== */
 import { VscAdd } from "react-icons/vsc";
+import { FaPlus } from "react-icons/fa";
 
 export function BtnCreateTodo(props) {
   return (
@@ -12,7 +13,7 @@ export function BtnCreateTodo(props) {
           console.log(e.target);
         }}
       >
-        <VscAdd />
+        <FaPlus />
       </button>
     </>
   );
