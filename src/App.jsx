@@ -10,11 +10,32 @@ import "./App.css";
 //**! === Hooks States === */
 import { useState } from "react";
 
+//**! === LocalStorage === */
+//localStorage.setItem("TODO_V1", Data);
+//localStorage.setItem("TODO_V1", JSON.stringify(Data));
+//localStorage.setItem("TODO_V1", JSON.parse(Data));
+//localStorage.removeItem("TODO_V1", Data);
+
+//**! ==== === App === ==== */
 function App() {
-  const [state, setState] = useState("");
+  const local = localStorage.setItem("TODO_V1", JSON.stringify(Data));
+  const dataLocalStorageTodo = localStorage.getItem(local);
+
+  let dataParsedTodo;
+
+  if (!dataLocalStorageTodo) {
+    localStorage.setItem("TODO_V1", JSON.stringify([]));
+    dataParsedTodo = [];
+  } else {
+    dataParsedTodo = JSON.parse(dataLocalStorageTodo);
+  }
+
+  //let dataParsedTodo = JSON.parse(dataLocalStorageTodo);
+
+  const [state, setState] = useState(dataParsedTodo);
   console.log("Change " + state);
 
-  const [stateTodo, setStateTodo] = useState(Data);
+  const [stateTodo, setStateTodo] = useState(dataParsedTodo);
 
   const completedTodo = stateTodo.filter((todo) => !!todo.completed).length;
   const totalTodo = stateTodo.length;

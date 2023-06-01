@@ -5,8 +5,8 @@ import {
   FaTimes,
   FaExclamationTriangle,
 } from "react-icons/fa";
-import { Data } from "../data/Data";
-console.log(Data);
+//import { Data } from "../data/Data";
+//console.log(Data);
 
 export function TodoItem({ searchTodo, stateTodo, setStateTodo }) {
   const completeTodo = (text) => {
