@@ -18,18 +18,17 @@ import { useState } from "react";
 
 //**! ==== === App === ==== */
 function App() {
-  const local = localStorage.setItem("TODO_V1", JSON.stringify(Data));
+  const local = localStorage.setItem("TODO_V1", Data);
   const dataLocalStorageTodo = localStorage.getItem(local);
 
   let dataParsedTodo;
 
   if (!dataLocalStorageTodo) {
-    localStorage.setItem("TODO_V1", JSON.stringify([]));
+    localStorage.setItem("TODO_V1", JSON.stringify([...Data]));
     dataParsedTodo = [];
   } else {
     dataParsedTodo = JSON.parse(dataLocalStorageTodo);
   }
-
   //let dataParsedTodo = JSON.parse(dataLocalStorageTodo);
 
   const [state, setState] = useState(dataParsedTodo);
@@ -46,6 +45,15 @@ function App() {
     return textLower.includes(textUpper);
   });
 
+  const saveTodo = (todoNew) => {
+    localStorage.setItem("TODO_V1", JSON.stringify(todoNew));
+    setStateTodo(todoNew);
+  };
+
+  /* function createNewTodo(todoName) {
+    setStateTodo([...stateTodo, todoName]);
+  }
+ */
   return (
     <>
       <main className="w-full h-full p-[10px] grid gap-[2rem] sm:grid-cols-1 grid-flow-row md:grid-cols-2 ">
@@ -56,6 +64,8 @@ function App() {
             searchTodo={searchTodo}
             stateTodo={stateTodo}
             setStateTodo={setStateTodo}
+            saveTodo={saveTodo}
+            //createNewTodo={createNewTodo}
           />
           <BtnCreateTodo />
         </section>

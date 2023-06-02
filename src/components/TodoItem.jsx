@@ -8,7 +8,13 @@ import {
 //import { Data } from "../data/Data";
 //console.log(Data);
 
-export function TodoItem({ searchTodo, stateTodo, setStateTodo }) {
+export function TodoItem({
+  searchTodo,
+  stateTodo,
+  setStateTodo,
+  saveTodo,
+  createNewTodo,
+}) {
   const completeTodo = (text) => {
     const newTodo = [...stateTodo];
     const todoIndex = newTodo.findIndex((todo) => todo.text == text);
@@ -30,6 +36,10 @@ export function TodoItem({ searchTodo, stateTodo, setStateTodo }) {
     newTodo.splice(indexDelete, 1);
     setStateTodo(newTodo);
   };
+
+  //saveTodo(stateTodo);
+
+  //createNewTodo(stateTodo);
 
   return (
     <>
