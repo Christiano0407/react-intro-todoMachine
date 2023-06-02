@@ -10,45 +10,71 @@ import "./App.css";
 //**! === Hooks States === */
 import { useState } from "react";
 
-//**! === LocalStorage === */
+//**? ==== === LocalStorage === ==== */
 //localStorage.setItem("TODO_V1", Data);
 //localStorage.setItem("TODO_V1", JSON.stringify(Data));
 //localStorage.setItem("TODO_V1", JSON.parse(Data));
 //localStorage.removeItem("TODO_V1", Data);
-
-//**! ==== === App === ==== */
-function App() {
-  const local = localStorage.setItem("TODO_V1", Data);
-  const dataLocalStorageTodo = localStorage.getItem(local);
-
-  let dataParsedTodo;
-
-  if (!dataLocalStorageTodo) {
-    localStorage.setItem("TODO_V1", JSON.stringify([...Data]));
-    dataParsedTodo = [];
-  } else {
-    dataParsedTodo = JSON.parse(dataLocalStorageTodo);
-  }
+function useLocalStorage(itemName, initialValue) {
+  //const local = localStorage.setItem("TODO_V1", "Data");
   //let dataParsedTodo = JSON.parse(dataLocalStorageTodo);
+  const dataLocalStorageItem = localStorage.getItem(itemName);
 
-  const [state, setState] = useState(dataParsedTodo);
-  console.log("Change " + state);
+  let dataParsedItem;
 
-  const [stateTodo, setStateTodo] = useState(dataParsedTodo);
+  if (!dataLocalStorageItem) {
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    dataParsedItem = initialValue;
+  } else {
+    dataParsedItem = JSON.parse(dataLocalStorageItem);
+  }
+  const [item, setItem] = useState(dataParsedItem);
 
-  const completedTodo = stateTodo.filter((todo) => !!todo.completed).length;
-  const totalTodo = stateTodo.length;
-
-  const searchTodo = stateTodo.filter((todo) => {
-    const textLower = todo.text.toLowerCase();
-    const textUpper = state.toLocaleLowerCase();
-    return textLower.includes(textUpper);
-  });
-
-  const saveTodo = (todoNew) => {
-    localStorage.setItem("TODO_V1", JSON.stringify(todoNew));
-    setStateTodo(todoNew);
+  const saveItem = (newPlusTodo) => {
+    localStorage.setItem(itemName, JSON.stringify(newPlusTodo));
+    setItem(newPlusTodo);
   };
+
+  return [item, saveItem];
+}
+
+//**? ==== ====  === App ===  ==== ==== */
+function App() {
+  const [todos, saveTodo] = useLocalStorage("TODO_V1", []);
+  console.log("Change " + todos);
+
+  const [stateTodo, setStateTodo] = useState("");
+
+  const completedTodos = todos.filter((todo) => !!todo.completed).length;
+  const totalTodo = todos.length;
+
+  const completeTodo = (text) => {
+    const newTodo = [...todos];
+    const todoIndex = newTodo.findIndex((todo) => todo.text == text);
+    newTodo[todoIndex].completed = true;
+    saveTodo(newTodo);
+  };
+
+  const notCompletedTodo = (text) => {
+    const todoNew = [...todos];
+    const indexTodo = todoNew.findIndex((todo) => todo.text == text);
+    todoNew[indexTodo].completed = false;
+    saveTodo(todoNew);
+  };
+
+  const deleteTodo = (text) => {
+    const newTodo = [...todos];
+    const indexDelete = newTodo.findIndex((todo) => todo.text == text);
+    //newTodo[indexDelete].completed = false;
+    newTodo.splice(indexDelete, 1);
+    saveTodo(newTodo);
+  };
+
+  const searchTodo = todos.filter((todo) => {
+    const todoText = todo.text.toLowerCase();
+    const searchText = stateTodo.toLowerCase();
+    return todoText.includes(searchText);
+  });
 
   /* function createNewTodo(todoName) {
     setStateTodo([...stateTodo, todoName]);
@@ -58,13 +84,15 @@ function App() {
     <>
       <main className="w-full h-full p-[10px] grid gap-[2rem] sm:grid-cols-1 grid-flow-row md:grid-cols-2 ">
         <section className="w-full sm:auto-cols-max md:col-start-1 col-end-2 flex flex-col">
-          <TodoCounter completed={completedTodo} total={totalTodo} />
-          <TodoSearch state={state} setState={setState} />
+          <TodoCounter completed={completedTodos} total={totalTodo} />
+          <TodoSearch state={todos} setState={saveTodo} />
           <TodoList
             searchTodo={searchTodo}
             stateTodo={stateTodo}
             setStateTodo={setStateTodo}
-            saveTodo={saveTodo}
+            complete={completeTodo}
+            notComplete={notCompletedTodo}
+            deleteTodo={deleteTodo}
             //createNewTodo={createNewTodo}
           />
           <BtnCreateTodo />

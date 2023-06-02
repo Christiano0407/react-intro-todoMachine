@@ -5,6 +5,9 @@ export function TodoList({
   searchTodo,
   stateTodo,
   setStateTodo,
+  completeTodo,
+  notCompletedTodo,
+  deleteTodo,
   saveTodo,
   createNewTodo,
 }) {
@@ -14,7 +17,9 @@ export function TodoList({
         searchTodo={searchTodo}
         stateTodo={stateTodo}
         setStateTodo={setStateTodo}
-        saveTodo={saveTodo}
+        complete={completeTodo}
+        notComplete={notCompletedTodo}
+        deleteTodo={deleteTodo}
         //createNewTodo={createNewTodo}
       />
     </div>

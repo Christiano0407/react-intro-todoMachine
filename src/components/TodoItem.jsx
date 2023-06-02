@@ -12,33 +12,11 @@ export function TodoItem({
   searchTodo,
   stateTodo,
   setStateTodo,
-  saveTodo,
   createNewTodo,
+  completeTodo,
+  notCompletedTodo,
+  deleteTodo,
 }) {
-  const completeTodo = (text) => {
-    const newTodo = [...stateTodo];
-    const todoIndex = newTodo.findIndex((todo) => todo.text == text);
-    newTodo[todoIndex].completed = true;
-    setStateTodo(newTodo);
-  };
-
-  const notCompletedTodo = (text) => {
-    const todoNew = [...stateTodo];
-    const indexTodo = todoNew.findIndex((todo) => todo.text === text);
-    todoNew[indexTodo].completed = false;
-    setStateTodo(todoNew);
-  };
-
-  const deleteTodo = (text) => {
-    const newTodo = [...stateTodo];
-    const indexDelete = newTodo.findIndex((todo) => todo.text === text);
-    //newTodo[indexDelete].completed = false;
-    newTodo.splice(indexDelete, 1);
-    setStateTodo(newTodo);
-  };
-
-  //saveTodo(stateTodo);
-
   //createNewTodo(stateTodo);
 
   return (
