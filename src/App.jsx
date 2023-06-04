@@ -1,46 +1,19 @@
 //** === ============= === ===== Component App ===== === ================ === */
 //**! === Imports === */
-import { TodoCounter } from "./components/TodoCounter";
-import { TodoSearch } from "./components/TodoSearch";
-import { TodoList } from "./components/TodoList";
-import { BtnCreateTodo } from "./components/BtnCreateTodo";
-import { ImagePlus } from "./components/ImagePlus";
+import { TodoCounter } from "./components/TodoCounter/index";
+import { TodoSearch } from "./components/TodoSearch/index";
+import { TodoList } from "./components/TodoList/index";
+import { BtnCreateTodo } from "./components/BtnCreateTodo/index";
+import { ImagePlus } from "./components/ImagePlus/index";
 import { Data } from "./data/Data";
+import { useLocalStorage } from "./hooks/UseLocalStorage";
 import "./App.css";
 //**! === Hooks States === */
 import { useState } from "react";
 
-//**? ==== === LocalStorage === ==== */
-const local = localStorage.setItem("TODO_V1", Data);
-//localStorage.setItem("TODO_V1", JSON.stringify(Data));
-//localStorage.setItem("TODO_V1", JSON.parse(Data));
-//localStorage.removeItem("TODO_V1", Data);
-
-function useLocalStorage(itemName, initialValue) {
-  //let dataParsedTodo = JSON.parse(dataLocalStorageTodo);
-  const dataLocalStorageItem = localStorage.getItem(itemName);
-
-  let dataParsedItem;
-
-  if (!dataLocalStorageItem) {
-    localStorage.setItem(itemName, JSON.stringify(initialValue));
-    dataParsedItem = initialValue;
-  } else {
-    dataParsedItem = JSON.parse(dataLocalStorageItem);
-  }
-  const [item, setItem] = useState(dataParsedItem);
-
-  const saveItem = (newPlusTodo) => {
-    localStorage.setItem(itemName, JSON.stringify(newPlusTodo));
-    setItem(newPlusTodo);
-  };
-
-  return [item, saveItem];
-}
-
 //**? ==== ====  === App ===  ==== ==== */
 function App() {
-  const [todos, saveTodo] = useLocalStorage(local, []);
+  const [todos, saveTodo] = useLocalStorage("TODO_V1", []);
   const [stateTodo, setStateTodo] = useState("");
 
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
