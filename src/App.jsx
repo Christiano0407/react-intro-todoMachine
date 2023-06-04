@@ -11,12 +11,12 @@ import "./App.css";
 import { useState } from "react";
 
 //**? ==== === LocalStorage === ==== */
-//localStorage.setItem("TODO_V1", Data);
+const local = localStorage.setItem("TODO_V1", Data);
 //localStorage.setItem("TODO_V1", JSON.stringify(Data));
 //localStorage.setItem("TODO_V1", JSON.parse(Data));
 //localStorage.removeItem("TODO_V1", Data);
+
 function useLocalStorage(itemName, initialValue) {
-  //const local = localStorage.setItem("TODO_V1", "Data");
   //let dataParsedTodo = JSON.parse(dataLocalStorageTodo);
   const dataLocalStorageItem = localStorage.getItem(itemName);
 
@@ -40,9 +40,7 @@ function useLocalStorage(itemName, initialValue) {
 
 //**? ==== ====  === App ===  ==== ==== */
 function App() {
-  const [todos, saveTodo] = useLocalStorage("TODO_V1", []);
-  console.log("Change " + todos);
-
+  const [todos, saveTodo] = useLocalStorage(local, []);
   const [stateTodo, setStateTodo] = useState("");
 
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
