@@ -1,7 +1,6 @@
 //**? ================ Component Item =============== */
 import {
   FaRegCheckCircle,
-  FaRegTimesCircle,
   FaTimes,
   FaExclamationTriangle,
 } from "react-icons/fa";
@@ -10,9 +9,6 @@ import {
 
 export function TodoItem({
   searchTodo,
-  stateTodo,
-  setStateTodo,
-  createNewTodo,
   completeTodo,
   notCompletedTodo,
   deleteTodo,

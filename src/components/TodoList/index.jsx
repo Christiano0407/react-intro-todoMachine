@@ -8,8 +8,6 @@ export function TodoList({
   completeTodo,
   notCompletedTodo,
   deleteTodo,
-  saveTodo,
-  createNewTodo,
 }) {
   return (
     <div className="w-full p-[1rem]">

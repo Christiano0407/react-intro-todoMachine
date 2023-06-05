@@ -5,9 +5,9 @@ import { TodoSearch } from "./components/TodoSearch/index";
 import { TodoList } from "./components/TodoList/index";
 import { BtnCreateTodo } from "./components/BtnCreateTodo/index";
 import { ImagePlus } from "./components/ImagePlus/index";
-import { Data } from "./data/Data";
+//import { Data } from "./data/Data";
 import { useLocalStorage } from "./hooks/UseLocalStorage";
-import "./App.css";
+import "./styles/App.css";
 //**! === Hooks States === */
 import { useState } from "react";
 
@@ -21,21 +21,21 @@ function App() {
 
   const completeTodo = (text) => {
     const newTodo = [...todos];
-    const todoIndex = newTodo.findIndex((todo) => todo.text == text);
+    const todoIndex = newTodo.findIndex((todo) => todo.text === text);
     newTodo[todoIndex].completed = true;
     saveTodo(newTodo);
   };
 
   const notCompletedTodo = (text) => {
     const todoNew = [...todos];
-    const indexTodo = todoNew.findIndex((todo) => todo.text == text);
+    const indexTodo = todoNew.findIndex((todo) => todo.text === text);
     todoNew[indexTodo].completed = false;
     saveTodo(todoNew);
   };
 
   const deleteTodo = (text) => {
     const newTodo = [...todos];
-    const indexDelete = newTodo.findIndex((todo) => todo.text == text);
+    const indexDelete = newTodo.findIndex((todo) => todo.text === text);
     //newTodo[indexDelete].completed = false;
     newTodo.splice(indexDelete, 1);
     saveTodo(newTodo);
