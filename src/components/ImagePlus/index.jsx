@@ -1,6 +1,6 @@
 //**? ===================== Component Images Plus ============================= */
-import imgPlus from "../assets/profile1.png";
-import backImg from "../assets/backPlus.jpg";
+//import imgPlus from "/src/assets/profile1.png";
+import backImg from "/src/assets/backPlus.jpg";
 
 export function ImagePlus() {
   return (

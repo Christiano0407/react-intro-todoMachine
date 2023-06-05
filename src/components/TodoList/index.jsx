@@ -1,5 +1,5 @@
 //**? ================== Component TodoList ===================== */
-import { TodoItem } from "../TodoItem";
+import { TodoItem } from "../TodoItem/index";
 
 export function TodoList({
   searchTodo,

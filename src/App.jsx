@@ -56,7 +56,7 @@ function App() {
       <main className="w-full h-full p-[10px] grid gap-[2rem] sm:grid-cols-1 grid-flow-row md:grid-cols-2 ">
         <section className="w-full sm:auto-cols-max md:col-start-1 col-end-2 flex flex-col">
           <TodoCounter completed={completedTodos} total={totalTodo} />
-          <TodoSearch state={todos} setState={saveTodo} />
+          <TodoSearch state={stateTodo} setState={setStateTodo} />
           <TodoList
             searchTodo={searchTodo}
             stateTodo={stateTodo}
