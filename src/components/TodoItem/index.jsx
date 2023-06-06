@@ -12,6 +12,7 @@ export function TodoItem({
   completeTodo,
   notCompletedTodo,
   deleteTodo,
+  setStateTodo,
 }) {
   //createNewTodo(stateTodo);
 

@@ -13,7 +13,12 @@ import { useState } from "react";
 
 //**? ==== ====  === App ===  ==== ==== */
 function App() {
-  const [todos, saveTodo] = useLocalStorage("TODO_V1", []);
+  const {
+    item: todos,
+    saveItem: saveTodo,
+    loading,
+    error,
+  } = useLocalStorage("TODO_V1", []);
   const [stateTodo, setStateTodo] = useState("");
 
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
@@ -60,12 +65,26 @@ function App() {
           <TodoList
             searchTodo={searchTodo}
             stateTodo={stateTodo}
-            setStateTodo={setStateTodo}
+            setStateTodo={saveTodo}
             complete={completeTodo}
             notComplete={notCompletedTodo}
             deleteTodo={deleteTodo}
             //createNewTodo={createNewTodo}
+            loading={loading}
+            error={error}
           />
+          {loading && (
+            <p
+              className="font-semibold text-bl
+            text-base my-3"
+            >
+              Loading and Change Todo
+            </p>
+          )}
+          {error && <p>Not Change and Load</p>}
+          {!loading && setStateTodo.length === 0 && (
+            <p>!Come On!! Create your first Todo!!!</p>
+          )}
           <BtnCreateTodo />
         </section>
         <section className="mob:hidden sm:hidden md:col-start-2 col-end-4">
