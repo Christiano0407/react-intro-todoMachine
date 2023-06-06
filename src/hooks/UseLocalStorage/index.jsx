@@ -58,7 +58,7 @@ export function useLocalStorage(itemName, initialValue) {
         setError(true);
       }
     }, 2000);
-  }, []);
+  }, []); // => Help Infinite Loop
 
   const saveItem = (newPlusTodo) => {
     localStorage.setItem(itemName, JSON.stringify(newPlusTodo));
