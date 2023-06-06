@@ -7,6 +7,7 @@ import { BtnCreateTodo } from "./components/BtnCreateTodo/index";
 import { ImagePlus } from "./components/ImagePlus/index";
 //import { Data } from "./data/Data";
 import { useLocalStorage } from "./hooks/UseLocalStorage";
+import { LoadingTodo } from "./components/LoadingTodo";
 import "./styles/App.css";
 //**! === Hooks States === */
 import { useState } from "react";
@@ -73,14 +74,7 @@ function App() {
             loading={loading}
             error={error}
           />
-          {loading && (
-            <p
-              className="font-semibold text-bl
-            text-base my-3"
-            >
-              Loading and Change Todo
-            </p>
-          )}
+          {loading && <LoadingTodo />}
           {error && <p>Not Change and Load</p>}
           {!loading && setStateTodo.length === 0 && (
             <p>!Come On!! Create your first Todo!!!</p>
