@@ -1,0 +1,57 @@
+/* == CSS Animation === */
+
+@layer {
+  .background {
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: preloadAnimation;
+    animation-timing-function: linear;
+  }
+}
+
+@keyframes preloadAnimation {
+  0% {
+    background-position: -100%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+@layer {
+  .text {
+    height: 22px;
+    background: transparent;
+    position: relative;
+    width: 100%;
+  }
+  .text::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 2rem;
+    height: 2.2rem;
+    background: #f2f2f2;
+  }
+  .text::after {
+    position: absolute;
+    right: 0;
+    height: 22px;
+    content: "";
+    background: #f2f2f2;
+  }
+  .text.medium::after {
+    width: 50%;
+  }
+  .text.small::after {
+    width: 75%;
+  }
+  .mask {
+    background: #f2f2f2;
+    width: 100%;
+  }
+  .thick {
+    height: 1.5rem;
+  }
+}

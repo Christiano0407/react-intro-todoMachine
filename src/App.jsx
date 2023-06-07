@@ -75,7 +75,7 @@ function App() {
             error={error}
           />
           {loading && <LoadingTodo />}
-          {error && <p>Not Change and Load</p>}
+          {error && <ErrorTodo />}
           {!loading && setStateTodo.length === 0 && (
             <p>!Come On!! Create your first Todo!!!</p>
           )}

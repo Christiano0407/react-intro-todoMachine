@@ -1,0 +1,19 @@
+/* === CSS LAZY ERROR LOADER === */
+@layer {
+  .background {
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: preloadAnimation;
+    animation-timing-function: linear;
+  }
+}
+
+@keyframes preloadAnimation {
+  0% {
+    background-position: -100%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
